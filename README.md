@@ -34,7 +34,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :order
+- has_one :order
 
 ###   orders テーブル
 
@@ -45,8 +45,8 @@
 
 ### Association
 
-
-- has_one :product
+- belongs_to :user
+- belongs_to :product 
 - has_one :destination
 
 
@@ -61,7 +61,7 @@
 | city                                | string     | null: false       |
 | building_name                       | string     |                   |
 | phone_number                        | string     | null: false       |
-
+| order                               | references | foreign_key: true |
 
 - belongs_to :order
 
