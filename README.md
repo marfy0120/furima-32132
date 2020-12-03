@@ -4,16 +4,17 @@
 |-------------------------------------|------------|-------------------|
 | nickname                            | string     | null: false       |
 | email                               | string     | null: false       |
-| user_password                       | string     | null: false       |
+| encrypted_password                  | string     | null: false       |
 | family_name                         | string     | null: false       |
 | farst_name                          | string     | null: false       |
 | family_name_kana                    | string     | null: false       |
 | farst_name_kana                     | string     | null: false       |
+| birthday                            | string     | null: false       |
 
 ### Association
 
 * has_many :orders
-* has_many :product
+* has_many :products
 
 ### product  テーブル
 
@@ -21,29 +22,32 @@
 | column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | product_name                        | string     | null: false       |
-| price                               | string     | null: false       |
+| price                               | integer    | null: false       |
 | description                         | text       | null: false       |
-| cost                                | string     | null: false       |
-| days                                | string     | null: false       |
-| prefecture                          | string     | null: false       |
-| category                            | string     | null: false       |
-| user_id                             | references | foreign_key: true |
+| cost_id                             | integer    | null: false       |
+| status_id                           | integer    | null: false       |
+| days_id                             | integer    | null: false       |
+| prefecture_id                       | integer    | null: false       |
+| category_id                         | integer    | null: false       |
+| user                                | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
+- belongs_to :order
 
 ###   orders テーブル
 
 | column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| nickname                            | string     | null: false       |
-| product_name                        | references | foreign_key: true |
+| product                     　　　   | references | foreign_key: true |
 | user_id                             | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :product
+- belongs_to :destination
 
 
 ###  destination  テーブル
@@ -51,16 +55,15 @@
 
 | column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| prefecture                          | string     | null: false       |
+| prefecture_id                       | integer    | null: false       |
 | yubin_number                        | string     | null: false       |
 | city_number                         | string     | null: false       |
 | city                                | string     | null: false       |
-| building_name                       | string     | null: false       |
+| building_name                       | string     |                   |
 | phone_number                        | string     | null: false       |
-| user_id                             | references | foreign_key: true |
+| user                                | references | foreign_key: true |
 
-
-
+- belongs_to :order
 
 
 
