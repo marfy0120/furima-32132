@@ -1,4 +1,3 @@
-
 ###   users テーブル
 
 | Column                              | Type       | Options           |
@@ -46,6 +45,7 @@
 
 - belongs_to :user
 
+
 ###  destination  テーブル
 
 
@@ -58,6 +58,8 @@
 | building_name                       | string     | null: false       |
 | phone_number                        | string     | null: false       |
 | user_id                             | references | foreign_key: true |
+
+
 
 
 
