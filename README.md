@@ -9,7 +9,7 @@
 | farst_name                          | string     | null: false       |
 | family_name_kana                    | string     | null: false       |
 | farst_name_kana                     | string     | null: false       |
-| birthday                            | string     | null: false       |
+| birthday                            | date       | null: false       |
 
 ### Association
 
@@ -41,13 +41,13 @@
 | column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
 | product                     　　　   | references | foreign_key: true |
-| user_id                             | references | foreign_key: true |
+| user                                | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :product
-- belongs_to :destination
+
+- has_one :product
+- has_one :destination
 
 
 ###  destination  テーブル
