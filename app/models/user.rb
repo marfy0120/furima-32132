@@ -11,10 +11,10 @@ class User < ApplicationRecord
          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
          validates :farst_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
          validates :birthday
-         validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze }
+         
 
       end
-      # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-      #  validates_format_of :password, with: PASSWORD_REGEX
+      PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+       validates_format_of :password, with: PASSWORD_REGEX
 
 end
