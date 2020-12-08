@@ -4,6 +4,13 @@ RSpec.describe User, type: :model do
     before do
       @user = FactoryBot.build(:user)
     end
+    context "正常系です" do
+      it "内容に問題がない" do
+        expect(@user).to be_valid
+      end
+    end
+    context "異常系です" do
+    
     it "nicknameが空だと登録できない" do
       
       @user.nickname = ""  
@@ -141,4 +148,5 @@ RSpec.describe User, type: :model do
 
 
 
+  end
   end
