@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    return redirect_to root_path if user_signed_in? && current_user.id != @item.user_id
     
   end
 
@@ -34,11 +35,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     return redirect_to item_path if @item.valid?
-    # # if 
-    #   redirect_to item_path
-      # else
+    
     render :edit
-    # end
+    
   end
 
 
