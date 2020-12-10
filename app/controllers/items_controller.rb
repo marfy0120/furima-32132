@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :edit]
   before_action :move_to_index, only: [:edit]
+  before_action :set_item, only: [:edit, :show, :update, :destroy]
   def index
     @items = Item.all.order(created_at: :desc)
     
@@ -21,18 +22,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     
   end
 
   def edit
-    @item = Item.find(params[:id])
     return redirect_to root_path if user_signed_in? && current_user.id != @item.user_id
     
   end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
     return redirect_to item_path if @item.valid?
     
@@ -41,16 +39,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    if @item.destroy
+    if user_signed_in? && current_user.id
+      @item.destroy
       redirect_to root_path
     else
       redirect_to root_path
     end
   end
-    # item = Item.find(params[:id])
-    # item.destroy
-    # redirect_to root_path
     
   
 
@@ -58,6 +53,10 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:product_name, :price, :description, :category_id, :prefecture_id, :image, :status_id, :cost_id, :day_id).merge(user_id: current_user.id)
+  end
+
+  def set_tweet
+    @item = Item.find(params[:id])
   end
 
   def move_to_index
