@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if user_signed_in? && current_user.id
+    if user_signed_in? && current_user.id = @item.user_id
       @item.destroy
       redirect_to root_path
     else
@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:product_name, :price, :description, :category_id, :prefecture_id, :image, :status_id, :cost_id, :day_id).merge(user_id: current_user.id)
   end
 
-  def set_tweet
+  def set_item
     @item = Item.find(params[:id])
   end
 
