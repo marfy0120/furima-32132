@@ -16,7 +16,7 @@
 * has_many :orders
 * has_many :products
 
-### product  テーブル
+### item  テーブル
 
 
 | column                              | Type       | Options           |
@@ -36,11 +36,11 @@
 - belongs_to :user
 - has_one :order
 
-###   orders テーブル
+###   buy テーブル
 
 | column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
-| product                     　　　   | references | foreign_key: true |
+| item                     　　　   | references | foreign_key: true |
 | user                                | references | foreign_key: true |
 
 ### Association
@@ -61,9 +61,9 @@
 | city                                | string     | null: false       |
 | building_name                       | string     |                   |
 | phone_number                        | string     | null: false       |
-| order                               | references | foreign_key: true |
+| buy                                 | references | foreign_key: true |
 
-- belongs_to :order
+- belongs_to :buy
 
 
 
