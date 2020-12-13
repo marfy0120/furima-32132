@@ -16,7 +16,7 @@ class UserBuy
 
   def save
     buy = Buy.create(item_id: item_id, user_id: user_id)
-    # Buy.create(item_id: item_id, user_id: user_id)
+    
     Address.create(buy_id: buy.id,prefecture_id: prefecture_id, yubin_number: yubin_number, city_number: city_number, city: city, building_name: building_name, phone_number: phone_number)
     
   end

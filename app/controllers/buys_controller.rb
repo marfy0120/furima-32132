@@ -5,7 +5,7 @@ class BuysController < ApplicationController
   
   def index
     @user_buy = UserBuy.new
-    # @item = Item.find(params[:item_id])
+    
     
   end
   
@@ -16,7 +16,7 @@ class BuysController < ApplicationController
 
   def create
     @user_buy = UserBuy.new(user_buy_params)
-    # @item = Item.find(params[:item_id])
+    
     if @user_buy.valid?
       Payjp.api_key = "sk_test_2451f9548c2f7e7b605ceac9"
       Payjp::Charge.create(

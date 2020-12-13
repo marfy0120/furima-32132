@@ -10,7 +10,7 @@ RSpec.describe UserBuy, type: :model do
      @item.image = fixture_file_upload('app/assets/images/comment.png')
      @item.save
     @user_buy = FactoryBot.build(:user_buy, item_id: @item.id, user_id: @user.id)
-    sleep(1)
+    # sleep(1)
   end
   context "正常系です" do
     it "内容に問題がない" do
@@ -64,6 +64,21 @@ RSpec.describe UserBuy, type: :model do
     @user_buy.yubin_number = "1111111"
     @user_buy.valid?
     expect(@user_buy.errors.full_messages).to include "Yubin number is invalid"
+  end
+
+  it "user_idがないと登録できない以外登録できない" do
+      
+    @user_buy.user_id = nil
+    @user_buy.valid?
+    expect(@user_buy.errors.full_messages).to include "User can't be blank"
+  end
+
+
+  it "item_idがないと登録できない以外登録できない" do
+      
+    @user_buy.item_id = nil
+    @user_buy.valid?
+    expect(@user_buy.errors.full_messages).to include "Item can't be blank"
   end
 
   
