@@ -18,7 +18,7 @@ class BuysController < ApplicationController
     @user_buy = UserBuy.new(user_buy_params)
     
     if @user_buy.valid?
-      Payjp.api_key = "sk_test_2451f9548c2f7e7b605ceac9"
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,  
         card: user_buy_params[:token],    
