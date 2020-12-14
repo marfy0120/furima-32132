@@ -6,11 +6,9 @@ FactoryBot.define do
     city                   {"aaaaa"}
     user_id                 {1}
     item_id                 {1}
-    # building_name          {"0000000"}
+     building_name          {"0000000"}
     phone_number           {"00099990000"}
     token {"tok_abcdefghijk00000000000000000"}
-    # user_id                 {1}
-    # association :user
-    # association :item
+    
   end
 end

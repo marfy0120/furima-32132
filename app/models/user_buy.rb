@@ -10,7 +10,7 @@ class UserBuy
   validates :yubin_number, format: { with: /\A\d{3}[-]\d{4}\z/ }
   validates :city_number
   validates :city
-  validates :phone_number
+  validates :phone_number, format: { with: /\A\d{11}\z/ }
   validates :token
   end
 

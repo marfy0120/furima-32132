@@ -8,22 +8,17 @@ class BuysController < ApplicationController
     
     
   end
-  
-  def new
-    @user_buy = UserBuy.new
-    
-  end
 
   def create
     @user_buy = UserBuy.new(user_buy_params)
-    
     if @user_buy.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,  
-        card: user_buy_params[:token],    
-        currency: 'jpy'                 
-      )
+       @buy
+      # Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      # Payjp::Charge.create(
+      #   amount: @item.price,  
+      #   card: user_buy_params[:token],    
+      #   currency: 'jpy'                 
+      # )
       @user_buy.save
       redirect_to root_path
     else
@@ -39,7 +34,16 @@ class BuysController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def buy
+    @buy = Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,  
+      card: user_buy_params[:token],    
+      currency: 'jpy'                 
+    )
+  end
+
   def move_to_index
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if current_user.id == @item.user_id || @item.buy
   end
 end
