@@ -12,14 +12,12 @@ class BuysController < ApplicationController
   def create
     @user_buy = UserBuy.new(user_buy_params)
     if @user_buy.valid?
-    buy
-     
+      buy
       @user_buy.save
       redirect_to root_path
     else
       render :index
     end
-  end
   private
   def user_buy_params
     params.require(:user_buy).permit(:prefecture_id, :yubin_number, :city_number, :city, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
