@@ -12,7 +12,7 @@ class BuysController < ApplicationController
   def create
     @user_buy = UserBuy.new(user_buy_params)
     if @user_buy.valid?
-      Payjp.api_key
+    buy
      
       @user_buy.save
       redirect_to root_path
