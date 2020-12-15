@@ -37,9 +37,9 @@ class ItemsController < ApplicationController
     
     render :edit
     
+    
   end
-
-  end
+  
 
   def destroy
     if user_signed_in? && current_user.id = @item.user_id
@@ -67,4 +67,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+  
+end
 
