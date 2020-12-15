@@ -86,6 +86,12 @@ RSpec.describe UserBuy, type: :model do
     @user_buy.valid?
     expect(@user_buy.errors.full_messages).to include "Phone number is invalid"
   end
+
+  it "prefecture_idが0だと登録できない" do
+    @user_buy.prefecture_id = 0 
+    @user_buy.valid?
+    expect(@user_buy.errors.full_messages).to include "Prefecture must be other than 0"
+  end
   
 
 
